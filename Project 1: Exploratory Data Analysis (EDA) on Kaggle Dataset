@@ -1,0 +1,32 @@
+# Project 1: Exploratory Data Analysis (Titanic Dataset)
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load dataset from seaborn (Titanic dataset is built-in)
+titanic = sns.load_dataset('titanic')
+
+# Show first few rows
+print(titanic.head())
+
+# Check missing values
+print("\nMissing values:\n", titanic.isnull().sum())
+
+# Basic statistics
+print("\nSummary statistics:\n", titanic.describe())
+
+# Visualization 1: Count of survivors
+sns.countplot(x='survived', data=titanic)
+plt.title("Survival Count")
+plt.show()
+
+# Visualization 2: Survival by gender
+sns.countplot(x='sex', hue='survived', data=titanic)
+plt.title("Survival by Gender")
+plt.show()
+
+# Visualization 3: Age distribution
+sns.histplot(titanic['age'].dropna(), bins=20, kde=True)
+plt.title("Age Distribution")
+plt.show()
